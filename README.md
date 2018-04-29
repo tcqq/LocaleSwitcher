@@ -3,7 +3,7 @@
 [![Licence](https://img.shields.io/badge/Licence-Apache2-blue.svg)](http://www.apache.org/licenses/LICENSE-2.0)
 
 # LocaleSwitcher
-The Locale Switcher allows your application to support multiple language switching.
+The LocaleSwitcher allows your application to support multiple language switching.
 
 ## Main features
 * Persistent language storage.
