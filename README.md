@@ -8,7 +8,7 @@ The Locale Switcher allows your application to support multiple language switchi
 ## Main features
 * Persistent language storage.
 * Supports manual setting of language or automatic language.
-* When the **A** Activity language changes, then back to the **B** Activity, language support is updated synchronously.
+* When the **A** Activity language changes, then back to the **B** Activity, language will updated synchronously.
 
 # Setup
 #### build.gradle
