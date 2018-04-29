@@ -1,4 +1,4 @@
-[ ![Download](https://api.bintray.com/packages/tcqq/android/localeswitcher/images/download.svg?version=1.0.0) ](https://bintray.com/tcqq/android/materialitem/1.0.0/link)
+[ ![Download](https://api.bintray.com/packages/tcqq/android/localeswitcher/images/download.svg?version=1.0.0) ](https://bintray.com/tcqq/android/localeswitcher/1.0.0/link)
 [![API](https://img.shields.io/badge/API-17%2B-green.svg?style=flat)](https://android-arsenal.com/api?level=17)
 [![Licence](https://img.shields.io/badge/Licence-Apache2-blue.svg)](http://www.apache.org/licenses/LICENSE-2.0)
 
