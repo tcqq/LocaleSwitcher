@@ -33,15 +33,15 @@ dependencies {
 
 ext {
     bintrayRepo = 'android'
-    bintrayName = 'localesswitcher'
-    publishedGroupId = 'com.tcqq.android.localesswitcher'
-    libraryName = 'localesswitcher'
-    artifact = 'localesswitcher'
+    bintrayName = 'localeswitcher'
+    publishedGroupId = 'com.tcqq.android.localeswitcher'
+    libraryName = 'localeswitcher'
+    artifact = 'localeswitcher'
 
-    libraryDescription = 'Locales switcher.'
+    libraryDescription = 'The Locale Switcher allows your application to support multiple language switching.'
 
-    siteUrl = 'https://bintray.com/localesswitcher/android/materialitem'
-    gitUrl = 'https://bintray.com/localesswitcher/android/materialitem.git'
+    siteUrl = 'https://bintray.com/localeswitcher/android/localeswitcher'
+    gitUrl = 'https://bintray.com/localeswitcher/android/localeswitcher.git'
 
     libraryVersion = '1.0.0'
 
