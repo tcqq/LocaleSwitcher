@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">语言环境切换器</string>
+
+    <string name="main_start">开始</string>
+
+    <string name="language_settings_title">语言</string>
+    <string name="language_settings_device_language">设备语言</string>
+</resources>

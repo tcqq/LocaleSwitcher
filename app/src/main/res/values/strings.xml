@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Locale Switcher</string>
+
+    <string name="main_start">Start</string>
+
+    <string name="language_settings_title">Languages</string>
+    <string name="language_settings_device_language">Device language</string>
+</resources>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">ロケールスイッチャー</string>
+
+    <string name="main_start">開始</string>
+
+    <string name="language_settings_title">言語</string>
+    <string name="language_settings_device_language">デバイス言語</string>
+</resources>

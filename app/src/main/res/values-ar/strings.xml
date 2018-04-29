@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">لغة الجلاد</string>
+
+    <string name="main_start">بداية</string>
+
+    <string name="language_settings_title">اللغات</string>
+    <string name="language_settings_device_language">لغة الجهاز</string>
+</resources>

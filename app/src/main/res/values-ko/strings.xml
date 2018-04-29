@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">로케일 전환기</string>
+
+    <string name="main_start">스타트</string>
+
+    <string name="language_settings_title">언어</string>
+    <string name="language_settings_device_language">장치 언어</string>
+</resources>
