@@ -60,8 +60,6 @@ public class LanguageSettingsManager {
         model.setPosition(position);
 
         setLanguageSettings(model);
-
-//        MainManager.onInstance().toggleLocale(position);
     }
 
     private LanguageSettingsModel getLanguageSettings() {
