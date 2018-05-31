@@ -18,7 +18,7 @@ Screenshots
 -----------
 
 ![Language Settings](/screenshots/language_settings.png)
-![Main](/screenshots/main.png)
+![Test Main](/screenshots/test_main.png)
 
 Setup
 -----
