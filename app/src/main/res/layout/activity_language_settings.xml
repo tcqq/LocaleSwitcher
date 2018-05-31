@@ -1,44 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:auto="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="${relativePackage}.${activityClass}">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true">
 
-    <android.support.design.widget.CoordinatorLayout
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <include layout="@layout/content_toolbar" />
+
+    </android.support.design.widget.AppBarLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fitsSystemWindows="true">
+        android:orientation="vertical"
+        auto:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <android.support.design.widget.AppBarLayout
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/text_view_selected_language"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:theme="@style/AppTheme.AppBarOverlay">
+            android:layout_height="@dimen/item_material_single_line_list_with_avatar_and_icon_height"
+            android:background="?attr/colorPrimaryDark"
+            android:gravity="center_vertical"
+            android:paddingStart="@dimen/item_material_root_left_padding"
+            android:paddingEnd="@dimen/item_material_root_right_padding"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/item_material_single_line_list_text_size"
+            tools:text="Selected language" />
 
-            <include layout="@layout/content_toolbar" />
-
-        </android.support.design.widget.AppBarLayout>
-
-        <LinearLayout
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycler_view"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            auto:layout_behavior="@string/appbar_scrolling_view_behavior">
+            android:layout_height="match_parent" />
 
-            <TextView
-                android:id="@+id/tv_selected_language"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/item_material_single_line_list_with_avatar_and_icon_height"
-                android:background="?attr/colorPrimaryDark"
-                android:gravity="center_vertical"
-                android:paddingStart="@dimen/item_material_root_left_padding"
-                android:paddingEnd="@dimen/item_material_root_right_padding"
-                android:textColor="@android:color/white"
-                android:textSize="@dimen/item_material_single_line_list_text_size"
-                tools:text="Selected language" />
+    </LinearLayout>
 
-            <include layout="@layout/content_recycler" />
-
-        </LinearLayout>
-
-    </android.support.design.widget.CoordinatorLayout>
-</layout>
+</android.support.design.widget.CoordinatorLayout>
