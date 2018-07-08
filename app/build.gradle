@@ -3,11 +3,13 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
 android {
-    compileSdkVersion 27
+    compileSdkVersion 28
+    buildToolsVersion '28.0.0'
+    
     defaultConfig {
         applicationId "com.example.localeswitcher"
         minSdkVersion 17
-        targetSdkVersion 27
+        targetSdkVersion 28
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -35,10 +37,10 @@ android {
 
 dependencies {
     // Android support
-    implementation 'com.android.support:appcompat-v7:27.1.1'
-    implementation 'com.android.support:design:27.1.1'
-    implementation 'com.android.support:recyclerview-v7:27.1.1'
-    implementation 'com.android.support.constraint:constraint-layout:1.1.0'
+    implementation 'com.android.support:appcompat-v7:28.0.0-alpha3'
+    implementation 'com.android.support:design:28.0.0-alpha3'
+    implementation 'com.android.support:recyclerview-v7:28.0.0-alpha3'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.2'
 
     // Kotlin
     implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.2.41'
@@ -49,6 +51,8 @@ dependencies {
 
     // Util
     implementation project(':localeswitcher')
+    implementation 'com.chibatching.kotpref:kotpref:2.5.0'
+    implementation 'com.chibatching.kotpref:initializer:2.5.0'
     implementation 'org.greenrobot:eventbus:3.1.1'
     implementation 'com.uber.autodispose:autodispose:0.7.0'
     implementation 'com.uber.autodispose:autodispose-android:0.7.0'

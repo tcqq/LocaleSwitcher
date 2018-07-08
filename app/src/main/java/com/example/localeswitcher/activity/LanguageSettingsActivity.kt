@@ -1,14 +1,14 @@
-package com.example.localeswitcher.ui.activity
+package com.example.localeswitcher.activity
 
 import android.arch.lifecycle.Lifecycle
 import android.os.Bundle
+import android.view.MenuItem
 import android.view.View
 import com.example.localeswitcher.R
-import com.example.localeswitcher.data.manager.LanguageSettingsManager
-import com.example.localeswitcher.data.manager.MainManager
-import com.example.localeswitcher.data.utils.AndroidUtil
-import com.example.localeswitcher.ui.adapter.LanguagesAdapter
-import com.example.localeswitcher.ui.adapter.items.LanguagesItem
+import com.example.localeswitcher.adapter.LanguagesAdapter
+import com.example.localeswitcher.adapter.items.LanguagesItem
+import com.example.localeswitcher.event.MainEvent
+import com.example.localeswitcher.manager.LanguageSettingsManager
 import com.tcqq.localeswitcher.LocaleSwitcherHelper
 import com.uber.autodispose.AutoDispose
 import com.uber.autodispose.ObservableSubscribeProxy
@@ -23,6 +23,7 @@ import io.reactivex.Observer
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_language_settings.*
+import org.greenrobot.eventbus.EventBus
 import timber.log.Timber
 import java.util.*
 
@@ -32,7 +33,8 @@ import java.util.*
  * @author Alan Dreamer
  * @since 04/12/2018 Created
  */
-class LanguageSettingsActivity : BaseActivity(), FlexibleAdapter.OnItemClickListener {
+class LanguageSettingsActivity : BaseActivity(),
+        FlexibleAdapter.OnItemClickListener {
 
     private var activatedPosition = -1
     private lateinit var localeList: List<Locale>
@@ -42,17 +44,16 @@ class LanguageSettingsActivity : BaseActivity(), FlexibleAdapter.OnItemClickList
     private val items = ArrayList<AbstractFlexibleItem<*>>()
     private var languagesList: List<AbstractFlexibleItem<*>> = items
 
-    override fun layoutId(): Int {
-        return R.layout.activity_language_settings
-    }
-
-    override fun toolbarId(): Int {
-        return R.id.toolbar
-    }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setTitle(getString(R.string.language_settings_title))
+        setContentView(R.layout.activity_language_settings)
+        setSupportActionBar(toolbar)
+        val actionBar = supportActionBar
+        if (actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(true)
+            actionBar.setHomeButtonEnabled(true)
+            actionBar.setTitle(R.string.language_settings_title)
+        }
         text_view_selected_language.text = LanguageSettingsManager.getDisplayName(this)
         initData()
         Observable
@@ -65,7 +66,7 @@ class LanguageSettingsActivity : BaseActivity(), FlexibleAdapter.OnItemClickList
                     }
 
                     override fun onNext(s: String) {
-                        items.add(LanguagesItem("I" + items.size, s))
+                        items.add(LanguagesItem(items.size.toString(), s))
                     }
 
                     override fun onError(e: Throwable) {
@@ -81,7 +82,7 @@ class LanguageSettingsActivity : BaseActivity(), FlexibleAdapter.OnItemClickList
     override fun onBackPressed() {
         super.onBackPressed()
         if (LanguageSettingsManager.languageSettingsChanged()) {
-            MainManager.resetActivity()
+            EventBus.getDefault().post(MainEvent(true))
         }
     }
 
@@ -110,9 +111,19 @@ class LanguageSettingsActivity : BaseActivity(), FlexibleAdapter.OnItemClickList
 
             setActivatedPosition(position)
             LanguageSettingsManager.toggleLocale(position)
-            AndroidUtil.recreateActivity(this, true)
+            recreate()
         }
         return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            android.R.id.home -> {
+                onBackPressed()
+                return true
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 
     private fun initData() {

@@ -1,4 +1,4 @@
-package com.example.localeswitcher.ui.adapter
+package com.example.localeswitcher.adapter
 
 import eu.davidea.flexibleadapter.FlexibleAdapter
 import eu.davidea.flexibleadapter.items.AbstractFlexibleItem

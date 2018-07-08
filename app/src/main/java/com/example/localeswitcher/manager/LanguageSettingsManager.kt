@@ -1,49 +1,28 @@
-package com.example.localeswitcher.data.manager
+package com.example.localeswitcher.manager
 
 import android.content.Context
 import com.example.localeswitcher.R
-import com.example.localeswitcher.data.models.LanguageSettingsModel
+import com.example.localeswitcher.model.LanguageSettingsModel
 import com.tcqq.localeswitcher.LocaleSwitcherHelper
 
 /**
- * Language settings.
- *
  * @author Alan Dreamer
  * @since 04/27/2018 Created
  */
 object LanguageSettingsManager {
 
-    private lateinit var languageSettingsModel: LanguageSettingsModel
-
     fun initLanguageSettings(context: Context) {
         val position = LocaleSwitcherHelper.newInstance(context).getPosition()
-        val model = LanguageSettingsModel()
-
-        model.positionBefore = position
-
-        model.position = position
-
-        languageSettingsModel = model
+        LanguageSettingsModel.positionBefore = position
+        LanguageSettingsModel.position = position
     }
 
     fun languageSettingsChanged(): Boolean {
-        val model = languageSettingsModel
-
-        val positionBefore = model.positionBefore
-
-        val position = model.position
-
-        return positionBefore.toLong() != position.toLong()
+        return LanguageSettingsModel.positionBefore != LanguageSettingsModel.position
     }
 
     fun toggleLocale(position: Int) {
-        val model = languageSettingsModel
-
-        model.position = position
-
-        languageSettingsModel = model
-
-//        MainManager.toggleLocale(position)
+        LanguageSettingsModel.position = position
     }
 
     fun getDisplayName(context: Context): String? {

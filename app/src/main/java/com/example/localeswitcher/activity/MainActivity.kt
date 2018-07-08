@@ -1,12 +1,12 @@
-package com.example.localeswitcher.ui.activity
+package com.example.localeswitcher.activity
 
 import android.content.Intent
 import android.os.Bundle
 import com.example.localeswitcher.R
-import com.example.localeswitcher.data.event.MainEvent
-import com.example.localeswitcher.data.manager.LanguageSettingsManager
-import com.example.localeswitcher.data.utils.AndroidUtil
+import com.example.localeswitcher.event.MainEvent
+import com.example.localeswitcher.manager.LanguageSettingsManager
 import kotlinx.android.synthetic.main.activity_main.*
+import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
 
@@ -16,17 +16,14 @@ import org.greenrobot.eventbus.ThreadMode
  */
 class MainActivity : BaseActivity() {
 
-    override fun layoutId(): Int {
-        return R.layout.activity_main
-    }
-
-    override fun toolbarId(): Int {
-        return R.id.toolbar
-    }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setTitle(R.string.app_name)
+        setContentView(R.layout.activity_main)
+        EventBus.getDefault().register(this)
+
+        setSupportActionBar(toolbar)
+        supportActionBar?.setTitle(R.string.app_name)
+
         // Initialize language settings
         LanguageSettingsManager.initLanguageSettings(this)
 
@@ -35,18 +32,15 @@ class MainActivity : BaseActivity() {
         }
     }
 
-    override fun enabledHomeUp(): Boolean {
-        return false
-    }
-
-    override fun enableEventBus(): Boolean {
-        return true
+    override fun onDestroy() {
+        super.onDestroy()
+        EventBus.getDefault().unregister(this)
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
-    fun onEvent(event: MainEvent) {
-        if (event.isResetActivity) {
-            AndroidUtil.recreateActivity(this, true)
+    fun onMainEvent(event: MainEvent) {
+        if (event.resetActivity) {
+            recreate()
         }
     }
 }
