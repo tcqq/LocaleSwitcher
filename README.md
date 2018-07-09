@@ -11,8 +11,8 @@ Introduction
 ------------
 
 * Persistent language storage.
-* The action bar changes normally when the locale changes.
-* Supports manual setting of language or automatic language.
+* When the locale changes, the action bar title changes normally.
+* Support for custom languages or automatic switching of languages.
 * When the **A** Activity language changes, then back to the **B** Activity, language will updated synchronously.
 
 Screenshots
