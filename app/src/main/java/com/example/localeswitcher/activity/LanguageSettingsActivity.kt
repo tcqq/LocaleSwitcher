@@ -112,7 +112,6 @@ class LanguageSettingsActivity : BaseActivity(),
                         recycler_view.layoutManager = SmoothScrollLinearLayoutManager(this@LanguageSettingsActivity)
                         recycler_view.adapter = adapter
                         recycler_view.setHasFixedSize(true)
-                        recycler_view.itemAnimator = FlexibleItemAnimator()
 
                         val position = LocaleSwitcherHelper.newInstance(this@LanguageSettingsActivity).getPosition()
                         activatedPosition = position
