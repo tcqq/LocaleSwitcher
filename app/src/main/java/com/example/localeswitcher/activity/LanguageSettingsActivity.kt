@@ -4,24 +4,17 @@ import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
 import com.example.localeswitcher.R
-import com.example.localeswitcher.adapter.LanguagesAdapter
 import com.example.localeswitcher.adapter.items.LanguagesItem
 import com.example.localeswitcher.event.MainEvent
-import com.example.localeswitcher.manager.LanguageSettingsManager
-import com.tcqq.localeswitcher.LocaleSwitcherHelper
+import com.example.localeswitcher.manager.LocaleSwitcherManager
+import com.example.localeswitcher.model.LanguageSettingsModel
+import com.example.localeswitcher.pref.LanguageSettingsPref
 import eu.davidea.flexibleadapter.FlexibleAdapter
-import eu.davidea.flexibleadapter.SelectableAdapter
-import eu.davidea.flexibleadapter.common.FlexibleItemAnimator
 import eu.davidea.flexibleadapter.common.SmoothScrollLinearLayoutManager
-import eu.davidea.flexibleadapter.items.AbstractFlexibleItem
+import eu.davidea.flexibleadapter.items.IFlexible
 import io.reactivex.Observable
-import io.reactivex.Observer
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.disposables.Disposable
-import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_language_settings.*
 import org.greenrobot.eventbus.EventBus
-import timber.log.Timber
 import java.util.*
 
 
@@ -35,7 +28,7 @@ class LanguageSettingsActivity : BaseActivity(),
         FlexibleAdapter.OnItemClickListener {
 
     private var activatedPosition = -1
-    private var items = ArrayList<AbstractFlexibleItem<*>>()
+    private var languageItems = ArrayList<IFlexible<*>>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -56,38 +49,35 @@ class LanguageSettingsActivity : BaseActivity(),
 
     override fun onBackPressed() {
         super.onBackPressed()
-        if (LanguageSettingsManager.languageSettingsChanged()) {
+        if (LanguageSettingsModel.positionBefore
+                != LanguageSettingsModel.position) {
             EventBus.getDefault().post(MainEvent(true))
         }
     }
 
     override fun onItemClick(view: View, position: Int): Boolean {
         if (position != activatedPosition) {
-            val localeSwitcherHelper = LocaleSwitcherHelper(this)
             if (position == 0) {
-                localeSwitcherHelper
-                        .setPosition(position)
-                        .setDeviceLanguage(true)
-                        .setDisplayName(getString(R.string.language_settings_device_language))
-                        .apply()
+                LanguageSettingsPref.position = position
+                LanguageSettingsPref.deviceLanguage = true
+                LanguageSettingsPref.displayName = getString(R.string.language_settings_device_language)
             } else {
                 val locale = getLocaleList().toTypedArray()[position - 1]
                 val language = locale.language
                 val country = locale.country
                 val displayName = Locale(language, country).getDisplayName(Locale(language, country))
 
-                localeSwitcherHelper
-                        .setPosition(position)
-                        .setLocale(language, country)
-                        .setDeviceLanguage(false)
-                        .setDisplayName(displayName)
-                        .apply()
+                LanguageSettingsPref.position = position
+                LanguageSettingsPref.language = language
+                LanguageSettingsPref.country = country
+                LanguageSettingsPref.deviceLanguage = false
+                LanguageSettingsPref.displayName = displayName
+                LocaleSwitcherManager.configureBaseContext(this)
             }
-
-            LanguageSettingsManager.toggleLocale(position)
+            LanguageSettingsModel.position = position
             recreate()
         }
-        return true
+        return false
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -101,39 +91,31 @@ class LanguageSettingsActivity : BaseActivity(),
     }
 
     private fun initRecyclerView() {
-        Observable
-                .merge(getHeaderList(), getLanguagesList())
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(object : Observer<String?> {
-                    override fun onComplete() {
-                        val adapter = LanguagesAdapter(items, this@LanguageSettingsActivity)
-                        adapter.mode = SelectableAdapter.Mode.SINGLE
-                        recycler_view.layoutManager = SmoothScrollLinearLayoutManager(this@LanguageSettingsActivity)
-                        recycler_view.adapter = adapter
-                        recycler_view.setHasFixedSize(true)
+        val adapter: FlexibleAdapter<IFlexible<*>> = FlexibleAdapter(getLanguageItems(), this, true)
+        recycler_view.layoutManager = SmoothScrollLinearLayoutManager(this)
+        recycler_view.adapter = adapter
+        recycler_view.setHasFixedSize(true)
 
-                        val position = LocaleSwitcherHelper.newInstance(this@LanguageSettingsActivity).getPosition()
-                        activatedPosition = position
-                        adapter.toggleSelection(position)
+        val position = LanguageSettingsPref.position
+        activatedPosition = position
+        adapter.toggleSelection(position)
 
-                        text_view_selected_language.text = LanguageSettingsManager.getDisplayName(this@LanguageSettingsActivity)
-                    }
-
-                    override fun onSubscribe(d: Disposable) {
-
-                    }
-
-                    override fun onNext(t: String) {
-                        items.add(LanguagesItem(items.size.toString(), t))
-                    }
-
-                    override fun onError(e: Throwable) {
-                        Timber.e(e.localizedMessage)
-                    }
-                })
+        text_view_selected_language.text = LanguageSettingsPref.deviceLanguage.let {
+            if (it) return@let getString(R.string.language_settings_device_language)
+            else return@let LanguageSettingsPref.displayName
+        }
     }
 
+
+    private fun getLanguageItems(): List<IFlexible<*>> {
+        var index = -1
+        Observable
+                .merge(getHeaderList(), getLanguagesList())
+                .subscribe {
+                    languageItems.add(LanguagesItem("language" + ++index, it))
+                }.isDisposed
+        return languageItems
+    }
 
     private fun getHeaderList(): Observable<String> {
         return Observable.just(getString(R.string.language_settings_device_language))

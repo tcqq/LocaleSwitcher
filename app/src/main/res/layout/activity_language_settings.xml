@@ -24,13 +24,13 @@
     <android.support.v7.widget.AppCompatTextView
         android:id="@+id/text_view_selected_language"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/item_material_single_line_list_with_avatar_and_icon_height"
+        android:layout_height="58dp"
         android:background="?attr/colorPrimaryDark"
         android:gravity="center_vertical"
-        android:paddingStart="@dimen/item_material_root_left_padding"
-        android:paddingEnd="@dimen/item_material_root_right_padding"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
         android:textColor="@android:color/white"
-        android:textSize="@dimen/item_material_single_line_list_text_size"
+        android:textAppearance="?attr/textAppearanceBody1"
         app:layout_constraintTop_toBottomOf="@+id/app_bar_layout"
         tools:text="Selected language" />
 
@@ -38,6 +38,7 @@
         android:id="@+id/recycler_view"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        tools:listitem="@layout/item_languages"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text_view_selected_language" />
 

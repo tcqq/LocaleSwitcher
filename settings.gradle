@@ -1,1 +1,1 @@
-include ':app', ':localeswitcher'
+include ':app'

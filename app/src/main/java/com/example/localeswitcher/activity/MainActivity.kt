@@ -4,7 +4,8 @@ import android.content.Intent
 import android.os.Bundle
 import com.example.localeswitcher.R
 import com.example.localeswitcher.event.MainEvent
-import com.example.localeswitcher.manager.LanguageSettingsManager
+import com.example.localeswitcher.model.LanguageSettingsModel
+import com.example.localeswitcher.pref.LanguageSettingsPref
 import kotlinx.android.synthetic.main.activity_main.*
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
@@ -24,8 +25,7 @@ class MainActivity : BaseActivity() {
         setSupportActionBar(toolbar)
         supportActionBar?.setTitle(R.string.app_name)
 
-        // Initialize language settings
-        LanguageSettingsManager.initLanguageSettings(this)
+        initLanguageSettings()
 
         button.setOnClickListener {
             startActivity(Intent(this, LanguageSettingsActivity::class.java))
@@ -42,6 +42,12 @@ class MainActivity : BaseActivity() {
         if (event.resetActivity) {
             recreate()
         }
+    }
+
+    private fun initLanguageSettings() {
+        val position = LanguageSettingsPref.position
+        LanguageSettingsModel.positionBefore = position
+        LanguageSettingsModel.position = position
     }
 }
 

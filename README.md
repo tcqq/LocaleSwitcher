@@ -1,4 +1,3 @@
-[ ![Download](https://api.bintray.com/packages/tcqq/android/localeswitcher/images/download.svg?version=1.1.0) ](https://bintray.com/tcqq/android/localeswitcher/1.1.0/link)
 [![API](https://img.shields.io/badge/API-17%2B-brightgreen.svg?style=flat)](https://android-arsenal.com/api?level=17)
 [![Licence](https://img.shields.io/badge/Licence-Apache2-blue.svg)](http://www.apache.org/licenses/LICENSE-2.0)
 
@@ -21,28 +20,6 @@ Screenshots
 ![Main](/screenshots/main.png)
 ![One language settings](/screenshots/one_language_settings.png)
 ![Two language settings](/screenshots/two_language_settings.png)
-
-Setup
------
-
-#### build.gradle
-```
-repositories {
-    jcenter()
-    maven { url 'https://dl.bintray.com/tcqq/android' } //For Snapshots
-}
-```
-```
-dependencies {
-    // Using JCenter
-    implementation 'com.tcqq.android.localeswitcher:localeswitcher:1.1.0'
-}
-```
-#### Stay Updated
-|LocaleSwitcher|
-|---|
-|<div align="center">1.1.0</div>
-|<a href='https://bintray.com/tcqq/android/localeswitcher?source=watch' alt='Get automatic notifications about new "localeswitcher" versions'><img src='https://www.bintray.com/docs/images/bintray_badge_color.png'></a>
 
 License
 -------

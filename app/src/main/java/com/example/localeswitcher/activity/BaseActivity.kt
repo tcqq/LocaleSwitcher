@@ -2,7 +2,8 @@ package com.example.localeswitcher.activity
 
 import android.content.Context
 import android.support.v7.app.AppCompatActivity
-import com.tcqq.localeswitcher.LocaleSwitcherHelper
+import com.example.localeswitcher.manager.LocaleSwitcherManager
+import com.example.localeswitcher.pref.LanguageSettingsPref
 
 
 /**
@@ -13,11 +14,11 @@ import com.tcqq.localeswitcher.LocaleSwitcherHelper
  */
 abstract class BaseActivity : AppCompatActivity() {
 
-    override fun attachBaseContext(base: Context) {
-        if (LocaleSwitcherHelper.newInstance(base).isDeviceLanguage().not()) {
-            super.attachBaseContext(LocaleSwitcherHelper(base).configureBaseContext())
+    override fun attachBaseContext(newBase: Context) {
+        if (LanguageSettingsPref.deviceLanguage.not()) {
+            super.attachBaseContext(LocaleSwitcherManager.configureBaseContext(newBase))
         } else {
-            super.attachBaseContext(base)
+            super.attachBaseContext(newBase)
         }
     }
 }
