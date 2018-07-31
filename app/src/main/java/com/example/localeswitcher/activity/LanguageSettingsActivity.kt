@@ -28,7 +28,6 @@ class LanguageSettingsActivity : BaseActivity(),
         FlexibleAdapter.OnItemClickListener {
 
     private var activatedPosition = -1
-    private var languageItems = ArrayList<IFlexible<*>>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -101,14 +100,18 @@ class LanguageSettingsActivity : BaseActivity(),
         adapter.toggleSelection(position)
 
         text_view_selected_language.text = LanguageSettingsPref.deviceLanguage.let {
-            if (it) return@let getString(R.string.language_settings_device_language)
-            else return@let LanguageSettingsPref.displayName
+            if (it) {
+                getString(R.string.language_settings_device_language)
+            } else {
+                LanguageSettingsPref.displayName
+            }
         }
     }
 
 
     private fun getLanguageItems(): List<IFlexible<*>> {
         var index = -1
+        val languageItems = ArrayList<IFlexible<*>>()
         Observable
                 .merge(getHeaderList(), getLanguagesList())
                 .subscribe {

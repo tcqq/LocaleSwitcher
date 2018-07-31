@@ -8,30 +8,44 @@
     android:paddingStart="16dp"
     android:paddingEnd="16dp">
 
-    <android.support.v7.widget.AppCompatTextView
-        android:id="@+id/text"
+    <FrameLayout
+        android:id="@+id/text_frame"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:ellipsize="end"
-        android:gravity="start"
-        android:lines="1"
-        android:textAppearance="?attr/textAppearanceBody1"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/icon"
+        app:layout_constraintEnd_toStartOf="@+id/icon_frame"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="Language name" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <android.support.v7.widget.AppCompatImageView
-        android:id="@+id/icon"
-        android:layout_width="24dp"
-        android:layout_height="24dp"
-        android:layout_marginStart="16dp"
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:gravity="start"
+            android:lines="1"
+            android:textAppearance="?attr/textAppearanceBody1"
+            tools:text="Language name" />
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/icon_frame"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/text"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:src="@drawable/ic_check_black_24dp"
-        tools:tint="?attr/colorSecondary" />
+        app:layout_constraintStart_toEndOf="@+id/text_frame"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <android.support.v7.widget.AppCompatImageView
+            android:id="@+id/icon"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginStart="16dp"
+            tools:src="@drawable/ic_check_black_24dp"
+            tools:tint="?attr/colorSecondary" />
+
+    </FrameLayout>
 
 </android.support.constraint.ConstraintLayout>
