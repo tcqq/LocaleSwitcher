@@ -1,9 +1,9 @@
 package com.example.localeswitcher.adapter.items
 
 import android.content.Context
-import android.support.v7.widget.AppCompatImageView
-import android.support.v7.widget.AppCompatTextView
-import android.support.v7.widget.RecyclerView
+import androidx.appcompat.widget.AppCompatImageView
+import androidx.appcompat.widget.AppCompatTextView
+import androidx.recyclerview.widget.RecyclerView
 import android.util.TypedValue
 import android.view.View
 import com.example.localeswitcher.R
@@ -42,6 +42,9 @@ data class LanguagesItem(val id: String, val displayName: String) : AbstractFlex
         }
     }
 
+    /**
+     * Used for Languages.
+     */
     class ViewHolder(view: View, adapter: FlexibleAdapter<*>) : FlexibleViewHolder(view, adapter) {
         var text: AppCompatTextView = view.findViewById(R.id.text)
         var icon: AppCompatImageView = view.findViewById(R.id.icon)

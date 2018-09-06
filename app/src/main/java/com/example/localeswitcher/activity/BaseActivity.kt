@@ -1,7 +1,7 @@
 package com.example.localeswitcher.activity
 
 import android.content.Context
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import com.example.localeswitcher.manager.LocaleSwitcherManager
 import com.example.localeswitcher.pref.LanguageSettingsPref
 

@@ -37,6 +37,9 @@ class MainActivity : BaseActivity() {
         EventBus.getDefault().unregister(this)
     }
 
+    /**
+     * This event is used to change the locale.
+     */
     @Subscribe(threadMode = ThreadMode.MAIN)
     fun onMainEvent(event: MainEvent) {
         if (event.resetActivity) {

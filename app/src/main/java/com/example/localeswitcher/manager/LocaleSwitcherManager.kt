@@ -13,8 +13,13 @@ import java.util.*
  */
 object LocaleSwitcherManager {
 
-    fun configureBaseContext(newBase: Context): Context {
-        return updateResources(newBase, Locale(LanguageSettingsPref.language, LanguageSettingsPref.country))
+    /**
+     * Update locale resources.
+     *
+     * @param base The new base context for this wrapper
+     */
+    fun configureBaseContext(base: Context): Context {
+        return updateResources(base, Locale(LanguageSettingsPref.language, LanguageSettingsPref.country))
     }
 
     private fun updateResources(newBase: Context, locale: Locale): Context {
