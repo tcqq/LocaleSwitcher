@@ -22,7 +22,7 @@ import java.util.*
  * Language settings. Select language and switch application language locale.
  *
  * @author Alan Dreamer
- * @since 04/12/2018 Created
+ * @since 2018/04/12 Created
  */
 class LanguageSettingsActivity : BaseActivity(),
         FlexibleAdapter.OnItemClickListener {
@@ -90,7 +90,7 @@ class LanguageSettingsActivity : BaseActivity(),
     }
 
     private fun initRecyclerView() {
-        val adapter: FlexibleAdapter<IFlexible<*>> = FlexibleAdapter(getLanguageItems(), this, true)
+        val adapter: FlexibleAdapter<IFlexible<*>> = FlexibleAdapter(getLanguagesItems(), this, true)
         recycler_view.layoutManager = SmoothScrollLinearLayoutManager(this)
         recycler_view.adapter = adapter
         recycler_view.setHasFixedSize(true)
@@ -108,16 +108,15 @@ class LanguageSettingsActivity : BaseActivity(),
         }
     }
 
-
-    private fun getLanguageItems(): List<IFlexible<*>> {
+    private fun getLanguagesItems(): List<IFlexible<*>> {
         var index = -1
-        val languageItems = ArrayList<IFlexible<*>>()
+        val items = ArrayList<IFlexible<*>>()
         Observable
                 .merge(getHeaderList(), getLanguagesList())
                 .subscribe {
-                    languageItems.add(LanguagesItem("language" + ++index, it))
+                    items.add(LanguagesItem("I" + ++index, it))
                 }.isDisposed
-        return languageItems
+        return items
     }
 
     private fun getHeaderList(): Observable<String> {
@@ -137,10 +136,10 @@ class LanguageSettingsActivity : BaseActivity(),
 
     private fun getLocaleList(): List<Locale> {
         return Arrays.asList(
-                Locale("en"),
-                Locale("zh", "CN"),
-                Locale("ja"),
-                Locale("ko"),
+                Locale.ENGLISH,
+                Locale.SIMPLIFIED_CHINESE,
+                Locale.TRADITIONAL_CHINESE,
+                Locale.JAPANESE,
                 Locale("ar"))
     }
 }

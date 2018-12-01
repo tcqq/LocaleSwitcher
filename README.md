@@ -18,9 +18,9 @@ Introduction
 Screenshots
 -----------
 
-![Main](/screenshots/main.png)
-![One language settings](/screenshots/one_language_settings.png)
-![Two language settings](/screenshots/two_language_settings.png)
+![One](/screenshots/one.png)
+![Two](/screenshots/two.png)
+![Three](/screenshots/three.png)
 
 License
 -------
