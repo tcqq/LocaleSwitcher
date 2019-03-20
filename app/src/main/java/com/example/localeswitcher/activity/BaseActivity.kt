@@ -15,10 +15,10 @@ import com.example.localeswitcher.pref.LanguageSettingsPref
 abstract class BaseActivity : AppCompatActivity() {
 
     override fun attachBaseContext(newBase: Context) {
-        if (LanguageSettingsPref.deviceLanguage.not()) {
-            super.attachBaseContext(LocaleSwitcherManager.configureBaseContext(newBase))
-        } else {
+        if (LanguageSettingsPref.deviceLanguage) {
             super.attachBaseContext(newBase)
+        } else {
+            super.attachBaseContext(LocaleSwitcherManager.configureBaseContext(newBase))
         }
     }
 }

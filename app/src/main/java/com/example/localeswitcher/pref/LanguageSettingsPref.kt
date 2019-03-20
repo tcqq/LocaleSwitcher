@@ -12,5 +12,5 @@ object LanguageSettingsPref : KotprefModel() {
     var language by stringPref("", "language")
     var country by stringPref("", "country")
     var position by intPref(0, "position")
-    var deviceLanguage by booleanPref(true, "deviceLanguage")
+    var deviceLanguage by booleanPref(true, "device_language")
 }
