@@ -13,7 +13,7 @@ import eu.davidea.flexibleadapter.items.IFlexible
 import eu.davidea.viewholders.FlexibleViewHolder
 
 /**
- * @author Alan Dreamer
+ * @author Alan Perry
  * @since 05/24/2018 Created
  */
 data class LanguagesItem(val id: String, val displayName: String) : AbstractFlexibleItem<LanguagesItem.ViewHolder>() {

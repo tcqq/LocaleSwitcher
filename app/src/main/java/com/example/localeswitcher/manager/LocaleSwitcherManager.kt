@@ -8,7 +8,7 @@ import java.util.*
 /**
  * Locale switcher manager.
  *
- * @author Alan Dreamer
+ * @author Alan Perry
  * @since 04/10/2018 Created
  */
 object LocaleSwitcherManager {

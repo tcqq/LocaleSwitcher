@@ -4,7 +4,7 @@
 //import eu.davidea.flexibleadapter.items.AbstractFlexibleItem
 //
 ///**
-// * @author Alan Dreamer
+// * @author Alan Perry
 // * @since 05/24/2018 Created
 // */
 //class LanguagesAdapter(items: List<AbstractFlexibleItem<*>>?, listeners: Any?) : FlexibleAdapter<AbstractFlexibleItem<*>>(items, listeners, true)

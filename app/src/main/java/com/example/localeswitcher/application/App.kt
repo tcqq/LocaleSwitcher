@@ -5,7 +5,7 @@ import com.example.localeswitcher.BuildConfig
 import timber.log.Timber
 
 /**
- * @author Alan Dreamer
+ * @author Alan Perry
  * @since 05/30/2018 Created
  */
 class App : Application() {

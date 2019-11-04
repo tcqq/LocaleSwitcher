@@ -3,7 +3,7 @@ package com.example.localeswitcher.model
 /**
  * Language settings.
  *
- * @author Alan Dreamer
+ * @author Alan Perry
  * @since 04/22/2018 Created
  */
 object LanguageSettingsModel {

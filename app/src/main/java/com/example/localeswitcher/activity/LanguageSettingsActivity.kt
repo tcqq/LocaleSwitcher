@@ -21,7 +21,7 @@ import java.util.*
 /**
  * Language settings. Select language and switch application language locale.
  *
- * @author Alan Dreamer
+ * @author Alan Perry
  * @since 2018/04/12 Created
  */
 class LanguageSettingsActivity : BaseActivity(),
