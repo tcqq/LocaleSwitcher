@@ -1,6 +1,5 @@
 [![API](https://img.shields.io/badge/API-17%2B-brightgreen.svg?style=flat)](https://android-arsenal.com/api?level=17)
 [![Licence](https://img.shields.io/badge/Licence-Apache2-blue.svg)](http://www.apache.org/licenses/LICENSE-2.0)
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/7de11a5bb8da4507a7286183d3264215)](https://app.codacy.com/app/tcqq/LocaleSwitcher?utm_source=github.com&utm_medium=referral&utm_content=tcqq/LocaleSwitcher&utm_campaign=Badge_Grade_Settings)
 
 LocaleSwitcher
 ==============
