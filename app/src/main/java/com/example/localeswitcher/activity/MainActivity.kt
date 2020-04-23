@@ -12,7 +12,7 @@ import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
 
 /**
- * @author Alan Perry
+ * @author Perry Lance
  * @since 04/29/2018 Created
  */
 class MainActivity : BaseActivity() {

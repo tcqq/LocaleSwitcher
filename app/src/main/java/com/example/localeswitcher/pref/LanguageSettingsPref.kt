@@ -3,7 +3,7 @@ package com.example.localeswitcher.pref
 import com.chibatching.kotpref.KotprefModel
 
 /**
- * @author Alan Perry
+ * @author Perry Lance
  * @since 07/20/2018 Created
  */
 object LanguageSettingsPref : KotprefModel() {

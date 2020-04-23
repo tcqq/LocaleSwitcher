@@ -9,7 +9,7 @@ import com.example.localeswitcher.pref.LanguageSettingsPref
 /**
  * Base Activity class, used to initialize global configuration.
  *
- * @author Alan Perry
+ * @author Perry Lance
  * @since 03/12/2016 Created
  */
 abstract class BaseActivity : AppCompatActivity() {
